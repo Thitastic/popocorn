@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const _PATH_GET_BY_MOVIE = 'http://localhost:3000/api/ep/m/'
+const _PATH_GET_BY_MOVIE = 'https://api-popcorn.herokuapp.com/api/ep/m/'
 
 class RssApi{
     static findEposide(id){

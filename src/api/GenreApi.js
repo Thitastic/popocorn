@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const _PATH_GET_ID = 'http://localhost:3000/api/genre/'
-const _PATH_GET_ALL = 'http://localhost:3000/api/genre/'
+const _PATH_GET_ID = 'https://api-popcorn.herokuapp.com/api/genre/'
+const _PATH_GET_ALL = 'https://api-popcorn.herokuapp.com/api/genre/'
 
 class RssApi{
     static findId(id){

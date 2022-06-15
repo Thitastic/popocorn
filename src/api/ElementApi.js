@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MovieApi from './MovieApi'
 import RssApi from './RssApi'
-const _PATH_GET_EL = 'http://localhost:3000/api/web/build/'
+const _PATH_GET_EL = 'https://api-popcorn.herokuapp.com/api/web/build/'
 
 class ElementApi{
     static findName(name){

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const _PATH_GET_RSS = 'http://localhost:3000/api/res/'
+const _PATH_GET_RSS = 'https://api-popcorn.herokuapp.com/api/res/'
 
 class RssApi{
     static findResource(id){
