@@ -1,12 +1,12 @@
 import axios from "axios"
 
 
-const _PATH_ALL_USERS = 'http://localhost:3000/api/users/'
-const _PATH_GET_BY_PHONE = 'http://localhost:3000/api/users/p/'
-const _PATH_UPDATE = 'http://localhost:3000/api/users/update'
-const _PATH_GET_BY_USERNAME = 'http://localhost:3000/api/users/username/'
-const _PATH_INSERT = 'http://localhost:3000/api/users/new'
-const _PATH_GET_BY_TOKEN = 'http://localhost:3000/api/users/t/'
+const _PATH_ALL_USERS = 'https://api-popcorn.herokuapp.com/api/users/'
+const _PATH_GET_BY_PHONE = 'https://api-popcorn.herokuapp.com/api/users/p/'
+const _PATH_UPDATE = 'https://api-popcorn.herokuapp.com/api/users/update'
+const _PATH_GET_BY_USERNAME = 'https://api-popcorn.herokuapp.com/api/users/username/'
+const _PATH_INSERT = 'https://api-popcorn.herokuapp.com/api/users/new'
+const _PATH_GET_BY_TOKEN = 'https://api-popcorn.herokuapp.com/api/users/t/'
 class userApi {
     static getUsers(){
         return new Promise((resolve, reject)=>{

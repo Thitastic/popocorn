@@ -1,10 +1,10 @@
 import axios from "axios"
 
-const _PATH_TRENDING = 'http://localhost:3000/api/movies/trending/'
-const _PATH_GENRE = 'http://localhost:3000/api/movies/g/'
-const _PATH_TYPE = 'http://localhost:3000/api/movies/type/'
-const _PATH_ID = 'http://localhost:3000/api/movies/watch/'
-const _PATH_SEARCH = 'http://localhost:3000/api/movies/search/'
+const _PATH_TRENDING = 'https://api-popcorn.herokuapp.com/api/movies/trending/'
+const _PATH_GENRE = 'https://api-popcorn.herokuapp.com/api/movies/g/'
+const _PATH_TYPE = 'https://api-popcorn.herokuapp.com/api/movies/type/'
+const _PATH_ID = 'https://api-popcorn.herokuapp.com/api/movies/watch/'
+const _PATH_SEARCH = 'https://api-popcorn.herokuapp.com/api/movies/search/'
 class MovieApi{
     static getTrending(limit){
         return new Promise((resolve, reject)=>{
