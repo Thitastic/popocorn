@@ -68,7 +68,7 @@
 
 <script>
 import UserApi from '../api/UserApi.js'
-// import OtpApi from '../api/OtpApi.js'
+import OtpApi from '../api/OtpApi.js'
 export default {
   name: "ui-otp",
   async mounted(){
@@ -108,8 +108,9 @@ export default {
      getOtp(){
       if(this.$refs.phoneInput.validate()){
           this.legalPhone = this.uPrefix.prefix + this.uPhone
-          console.log(this.legalPhone)
-          this.sysOtp = '111222'
+          this.sysOtp = OtpApi.generateOtp(6)
+          const msg = "Your OTP Code is " + this.sysOtp
+          OtpApi.sendSms("+"+this.legalPhone, msg)
           this.step = 2
       }
       

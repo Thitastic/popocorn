@@ -38,7 +38,7 @@
 
 <script>
 import UserApi from '../../api/UserApi'
-//import OtpApi from '../../api/OtpApi'
+import OtpApi from '../../api/OtpApi'
 export default {
     name: 'ui-acc-info',
     data(){
@@ -106,10 +106,9 @@ export default {
         this.numberVerify = false
        },
        sendOtp(){
-        // this.serverOtp = OtpApi.generateOtp(6)
-        //const otpMsg = "Your OTP is "+ this.serverOtp + " ."
-        //OtpApi.sendSms(this.user._phone, otpMsg)
-        this.serverOtp = "565656"
+        this.serverOtp = OtpApi.generateOtp(6)
+        const otpMsg = "Your OTP is "+ this.serverOtp + " ."
+        OtpApi.sendSms("+" + this.user._phone, otpMsg)
        },
        checkOtp(){
         if(this.serverOtp == this.otp){
