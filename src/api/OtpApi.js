@@ -1,5 +1,5 @@
 import axios from 'axios'
-const _PATH_SEND_SMS = "'https://api-popcorn.herokuapp.com/api/sms"
+const _PATH_SEND_SMS = "https://api-popcorn.herokuapp.com/api/sms"
 class OtpApi{
     static sendSms(_message) {
         return new Promise((resolve, reject)=>{
