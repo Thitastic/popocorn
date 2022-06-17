@@ -11,7 +11,6 @@ import Search from '../components/Search'
 import Watch from '../components/Watch'
 import Profile from '../components/home/AccountInfo'
 import Home from '../components/home/Home'
-import Gallery from '../components/home/Gallery'
 import Collections from '../components/home/HomeCollections'
 import Payment from '../components/Payment'
 Vue.use(VueRouter)
@@ -32,11 +31,6 @@ const routes = [
                 path: '/home',
                 name: 'Home',
                 component: Home
-            },
-            {
-                path: '/gallery',
-                name: 'Gallery',
-                component: Gallery
             },
             {
                 path: '/collections',
