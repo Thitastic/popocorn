@@ -109,8 +109,11 @@ export default {
       if(this.$refs.phoneInput.validate()){
           this.legalPhone = this.uPrefix.prefix + this.uPhone
           this.sysOtp = OtpApi.generateOtp(6)
-          const msg = "Your OTP Code is " + this.sysOtp
-          OtpApi.sendSms("+"+this.legalPhone, msg)
+          const otpMessage  = {
+            number: "+" + this.legalPhone,
+            text: "Your OTP number is: " + this.sysOtp
+          }
+          OtpApi.sendSms(otpMessage)
           this.step = 2
       }
       

@@ -1,23 +1,16 @@
-const Vonage = require('@vonage/server-sdk')
-
+import axios from 'axios'
+const _PATH_SEND_SMS = "'https://api-popcorn.herokuapp.com/api/sms"
 class OtpApi{
-    static sendSms(target, content) {
-
-        const sender = "POPCORN"
-        const vonage = new Vonage({
-            apiKey: 'b65409d0',
-            apiSecret: 'agK00JLrgCm2e6SN'
-        })
-
-        vonage.message.sendSms(sender, target, content, (err, responseData) => {
-            if (err) {
-                console.log(err);
-            } else {
-                if(responseData.messages[0]['status'] === "0") {
-                    console.log("Message sent successfully.");
-                } else {
-                    console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
-                }
+    static sendSms(_message) {
+        return new Promise((resolve, reject)=>{
+            try{
+                axios.post(_PATH_SEND_SMS, {message: _message}).then((res)=>{
+                    resolve(
+                       res.status
+                    )
+                }).catch((err)=>{reject(err)})
+            }catch(error){
+                console.log(error)
             }
         })
     }
