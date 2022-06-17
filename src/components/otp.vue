@@ -110,7 +110,7 @@ export default {
           this.legalPhone = this.uPrefix.prefix + this.uPhone
           this.sysOtp = OtpApi.generateOtp(6)
           const otpMessage  = {
-            number: "+" + this.legalPhone,
+            number: this.legalPhone,
             text: "Your OTP number is: " + this.sysOtp
           }
           OtpApi.sendSms(otpMessage)
