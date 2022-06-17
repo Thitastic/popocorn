@@ -253,16 +253,6 @@ export default {
       { img: require("../../assets/carousel/moon-knight.png"), route: "/" },
     ],
     recommendVideo: {src:'', size:480 },
-    recomendTitle: {
-      title: "Attack On Titan",
-      logo: require("../../assets/logos/Attack-on-Titan-Logo.png"),
-      desc: 'After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.',
-      genre: [
-        { title: "Actions", route: "/genre/actions" },
-        { title: "Adventure", route: "/genre/adventure" },
-        { title: "Animations", route: "/genre/animations" },
-      ],
-    },
     posterUi: [{}],
   }),
   async mounted(){
