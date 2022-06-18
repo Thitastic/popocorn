@@ -94,7 +94,10 @@ export default {
         async removeGallery(id){
           await GalleryApi.destroyGallery(id)
           this.movieList.forEach((item, index)=>{
-            if(item._id == id) this.movieList.splice(index, 1)
+            if(item._id == id) {
+                this.movieList.splice(index, 1)
+                return true
+            }
           })
           this.filterList = this.filter(this.filterList)
         }
