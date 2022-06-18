@@ -70,7 +70,7 @@
                 <v-icon color="white" class="pr-1">mdi-thumb-up</v-icon>
                 <h4>{{ movie._rating }} / 5.0</h4>
               </v-layout>
-              <v-btn class="my-1" color="primary" width="100%"
+              <v-btn @click="insertGallery(movie._id)" class="my-1" color="primary" width="100%"
                 >Save to gallery</v-btn
               >
             </v-col>
@@ -86,6 +86,8 @@ import Player from "./player/PlayerMax";
 import EposidesApi from "../api/EposidesApi";
 import MovieApi from "../api/MovieApi";
 import RssApi from "../api/RssApi";
+import GalleryApi from '../api/GalleryApi'
+import UserApi from '../api/UserApi'
 export default {
   name: "ui-watch",
   components: {
@@ -131,6 +133,19 @@ export default {
       }
       this.pageLoad = true
     },
+    async insertGallery(id){
+      const movie = await MovieApi.findId(id)
+      const user = await UserApi.findToken(localStorage.getItem('token'))
+      const gallery = {
+        _user_id: user[0]._id,
+        _movie: movie[0]
+      }
+      const result = await GalleryApi.insert(gallery)
+      console.log(gallery)
+      if(result === 200){
+        console.log('Add success')
+      }
+    }
   },
 };
 </script>

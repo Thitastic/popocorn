@@ -49,7 +49,7 @@
               <v-icon>mdi-play</v-icon>
               <span class="px-3">Watch now</span>
             </v-btn>
-            <v-btn class="poster__actions" color="primary" large>
+            <v-btn @click="insertGallery(poster.posterId)" class="poster__actions" color="primary" large>
               <v-icon>mdi-movie</v-icon>
               <span class="px-3">Add to Gallery</span>
             </v-btn>
@@ -82,8 +82,8 @@
                   <v-icon>mdi-play</v-icon>
                   <span class="px-2">Watch</span>
                 </v-btn>
-                <v-btn color="primary" elevation="0"
-                  ><v-icon>mdi-information</v-icon></v-btn
+                <v-btn @click="insertGallery(item._id)" color="primary" elevation="0"
+                  ><v-icon>mdi-movie</v-icon></v-btn
                 >
               </v-card-actions>
             </v-card>
@@ -148,9 +148,9 @@
               <v-icon>mdi-play</v-icon>
               <span class="px-3">Watch now</span>
             </v-btn>
-            <v-btn class="reccommend__actions" color="primary" large>
-              <v-icon>mdi-information</v-icon>
-              <span class="px-3">More info</span>
+            <v-btn  @click="insertGallery(recomend.posterId)" class="reccommend__actions" color="primary" large>
+              <v-icon>mdi-movie</v-icon>
+              <span class="px-3">Add to gallery</span>
             </v-btn>
               </v-card-actions>
             </v-card>
@@ -185,8 +185,8 @@
                   <v-icon>mdi-play</v-icon>
                   <span class="px-2">Watch</span>
                 </v-btn>
-                <v-btn color="primary" elevation="0"
-                  ><v-icon>mdi-information</v-icon></v-btn
+                <v-btn  @click="insertGallery(item._id)" color="primary" elevation="0"
+                  ><v-icon>mdi-movie</v-icon></v-btn
                 >
               </v-card-actions>
             </v-card>
@@ -220,8 +220,8 @@
                   <v-icon>mdi-play</v-icon>
                   <span class="px-2">Watch</span>
                 </v-btn>
-                <v-btn color="primary" elevation="0"
-                  ><v-icon>mdi-information</v-icon></v-btn
+                <v-btn  @click="insertGallery(item._id)" color="primary" elevation="0"
+                  ><v-icon>mdi-movie</v-icon></v-btn
                 >
               </v-card-actions>
             </v-card>
@@ -237,6 +237,8 @@
 import Player from "../player/Player";
 import MovieApi from '../../api/MovieApi'
 import ElementLoader from '../../api/element-loader/ElementLoader'
+import GalleryApi from '../../api/GalleryApi'
+import UserApi from '../../api/UserApi'
 export default {
   name: "ui-home",
   components: { Player },
@@ -270,8 +272,21 @@ export default {
   methods:{
     goWatch(movieId){
       this.$router.push(`/watch/${movieId}`)
+    },
+    async insertGallery(id){
+      const movie = await MovieApi.findId(id)
+      const user = await UserApi.findToken(localStorage.getItem('token'))
+      const gallery = {
+        _user_id: user[0]._id,
+        _movie: movie[0]
+      }
+      const result = await GalleryApi.insert(gallery)
+      console.log(gallery)
+      if(result === 200){
+        console.log('Add success')
+      }
     }
-  }
+  },
 };
 </script>
 

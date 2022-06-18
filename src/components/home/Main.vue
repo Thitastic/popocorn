@@ -60,7 +60,7 @@
             </v-btn>
           </template>
           <v-list>
-            <v-list-item  class="profile-item">
+            <v-list-item @click="goGallery()"  class="profile-item">
               <v-list-item-icon><v-icon class="profile-item__icon">mdi-movie</v-icon></v-list-item-icon>
               <v-list-item-title class="profile-item__text">Gallery</v-list-item-title>
             </v-list-item>
@@ -90,7 +90,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
-        <router-view @loadUser="loadUser()"></router-view>
+        <router-view @loadUser="loadUser()" ></router-view>
     </v-main>
     <div class="alert">
        <v-alert :value="pageAlert.vissible" transition="slide-x-transition" elevation="6" color="white" class="page__alert">
@@ -163,6 +163,10 @@ export default {
       this.$router.push("/login")
     },
 
+    goGallery(){
+      this.$router.push("/gallery")
+    },
+
     goCollections(_type){
       this.$router.push({path: '/collections/', query:{type: _type}})
     },
@@ -201,15 +205,6 @@ export default {
     goProfile(){
       this.activeTab = 0
       this.$router.push('/profile')
-    },
-    setAlert(alert){
-      this.pageAlert.vissible = alert.vissible
-      this.pageAlert.msg = alert.msg
-      this.pageAlert.process = alert.process
-      this.pageAlert.icon = alert.icon
-      setTimeout(() => {
-        
-      }, 3000);
     },
     async goLogout(){
       this.pageAlert.vissible = true
