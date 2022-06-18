@@ -13,6 +13,7 @@ import Profile from '../components/home/AccountInfo'
 import Home from '../components/home/Home'
 import Collections from '../components/home/HomeCollections'
 import Payment from '../components/Payment'
+import Gallery from '../components/home/Gallery'
 Vue.use(VueRouter)
 
 const routes = [
@@ -25,7 +26,16 @@ const routes = [
             {
                 path: '/profile',
                 name: 'Profile',
-                component: Profile
+                component: Profile,
+                beforeEnter(to, from, next){
+                    const token = localStorage.getItem('token')
+                    if(token != null){
+                        next()
+                    }
+                    else{
+                        next('/login')
+                    }
+                }
             },
             {
                 path: '/home',
@@ -36,7 +46,21 @@ const routes = [
                 path: '/collections',
                 name: 'Collections',
                 component: Collections
-            }
+            },
+            {
+                path: '/gallery',
+                name: 'Gallery',
+                component: Gallery,
+                beforeEnter(to, from, next){
+                    const token = localStorage.getItem('token')
+                    if(token != null){
+                        next()
+                    }
+                    else{
+                        next('/login')
+                    }
+                }
+            },
         ]
     },
     {
